@@ -24,9 +24,13 @@
  * @returns {{ name: string, price: number }}
  */
 export function readForm() {
-  // TODO: read .value off each input. Trim the name, and convert the price
-  // with Number().
-  throw new Error("readForm is not written yet");
+  const nameInput = document.getElementById("name");
+  const priceInput = document.getElementById("price");
+
+  const name = nameInput.value.trim();
+  const price = parseFloat(priceInput.value) || 0;
+
+  return { name, price };
 }
 
 /**
@@ -36,7 +40,11 @@ export function readForm() {
  */
 export function clearForm() {
   // TODO: set each input's .value to an empty string.
-  throw new Error("clearForm is not written yet");
+  const nameInput = document.getElementById("name");
+  const priceInput = document.getElementById("price");
+
+  nameInput.value = "";
+  priceInput.value = "";
 }
 
 /**
@@ -54,7 +62,24 @@ export function clearForm() {
 export function renderList(items) {
   // TODO: empty #list first, then build one card per item — the same card
   // shape as module 12.
-  throw new Error("renderList is not written yet");
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  items.forEach((item) => {
+    const card = document.createElement("li");
+    card.classList.add("card");
+
+    const h3 = document.createElement("h3");
+    h3.textContent = item.name;
+    card.appendChild(h3);
+
+    const p = document.createElement("p");
+    p.classList.add("price");
+    p.textContent = `${item.price} EGP`;
+    card.appendChild(p);
+
+    list.appendChild(card);
+  });
 }
 
 /**
@@ -86,4 +111,30 @@ export function renderList(items) {
  * Remember `export`.
  */
 
-// TODO: write wireForm here.
+const items = [];
+
+export function wireForm() {
+  const form = document.getElementById("product-form");
+  const error = document.getElementById("error");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const item = readForm();
+
+    if (!item.name) {
+      error.textContent = "Give the product a name.";
+      return;
+    }
+
+    if (item.price <= 0 || Number.isNaN(item.price)) {
+      error.textContent = "Give the product a price.";
+      return;
+    }
+
+    error.textContent = "";
+    items.push(item);
+    renderList(items);
+    clearForm();
+  });
+}
