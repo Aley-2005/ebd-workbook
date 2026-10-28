@@ -1,0 +1,40 @@
+/* Checkpoint B — your styling. Build it to checkpoint-b/spec.md. */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f5f9;
+  margin: 0;
+  padding: 30px;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #0f172a;
+}
+
+#list {
+  list-style: none;
+  padding: 0;
+}
+
+.product {
+  padding: 15px;
+  color: #1e293b;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #cbd5e1;
+}
+
+button {
+  background-color: #0f766e;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}

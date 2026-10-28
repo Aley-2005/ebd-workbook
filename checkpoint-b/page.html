@@ -1,0 +1,30 @@
+<!--
+  Checkpoint B — your page. Build it to checkpoint-b/spec.md.
+  Look at it with:  npm run open b
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Store</title>
+  <link rel="stylesheet" href="page.css">
+</head>
+
+<body>
+  <main>
+    <h1>Campus Store</h1>
+
+    <ul id="list"></ul>
+
+    <button id="show-some">Show some</button>
+  </main>
+
+  <script type="module" src="page.js"></script>
+  <script type="module">
+    import { start } from "./page.js";
+    start();
+  </script>
+</body>
+</html>
